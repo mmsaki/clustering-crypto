@@ -3,12 +3,24 @@
 
 ## Table of Contents
 <details> 
+<li>
 1. Crypto Clustering Overview
+</li>
+<li>
 2. Data Preprocessing
+</li>
+<li>
 3. Reducing Data Dimentions Using PCA
+</li>
+<li>
 4. Clustering Cryptocurrencies Using K-Means
+</li>
+<li>
 5. Visualizing Results
+</li>
+<li>
 6. Optional Challenge
+</li>
 </details>
 
 ## Crypto Clustering Overview
