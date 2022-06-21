@@ -33,9 +33,9 @@ Optional Challenge
 In this assignment I run the k-Means algorithm and a Principal Component Analysis (PCA) to cluster cryptocurrencies. 
 
 - Assuming I am a Senior Manager at the Advisory Services team on a [Big Four firm](https://en.wikipedia.org/wiki/Big_Four_accounting_firms).
-- One of your most important clients, a prominent investment bank, is interested in offering a new cryptocurrencies investment portfolio for its customers, however, they are lost in the immense universe of cryptocurrencies. 
-- They ask you to help them make sense of it all by generating a report of what cryptocurrencies are available on the trading market and how they can be grouped using classification.
-- I will put my new unsupervivsed learning and Amazon SageMaker skills into action by clustering cryptocurrencies and creating plots to present your results.
+- One of my most important clients, a prominent investment bank, is interested in offering a new cryptocurrencies investment portfolio for its customers, however, they are lost in the immense universe of cryptocurrencies. 
+- They ask me to help them make sense of it all by generating a report of what cryptocurrencies are available on the trading market and how they can be grouped using classification.
+- I will put my new unsupervivsed learning and Amazon SageMaker skills into action by clustering cryptocurrencies and creating plots to present my results.
 
 - I am asked to accomplish the following main tasks:
 
@@ -45,13 +45,13 @@ In this assignment I run the k-Means algorithm and a Principal Component Analysi
 
 - **[Clustering Cryptocurrencies Using K-Means](#clustering-cryptocurrencies-using-k-means):** Predict clusters using the cryptocurrencies data using the `KMeans` algorithm from `sklearn`.
 
-- **[Visualizing Results](#visualizing-results):** Create some plots and data tables to present your results.
+- **[Visualizing Results](#visualizing-results):** Create some plots and data tables to present my results.
 
-- **[Optional Challenge](#optional-challenge):** Deploy your notebook to Amazon SageMaker.
+- **[Optional Challenge](#optional-challenge):** Deploy my notebook to Amazon SageMaker.
 
 ## Data Processing
 
-- [x] Using the following `requests` library, retreive the necessary data from the following API endpoint from _CryptoCompare_ - `https://min-api.cryptocompare.com/data/all/coinlist`. **HINT:** You will need to use the 'Data' key from the json response, then transpose the DataFrame. Name your DataFrame `crypto_df`.
+- [x] Using the following `requests` library, retreive the necessary data from the following API endpoint from _CryptoCompare_ - `https://min-api.cryptocompare.com/data/all/coinlist`. **HINT:** I will need to use the 'Data' key from the json response, then transpose the DataFrame. Name my DataFrame `crypto_df`.
 
 ```python
 # Use the following endpoint to fetch json data
@@ -141,7 +141,7 @@ pca = PCA(n_components=3)
 crypto_pca = pca.fit_transform(X)
 ```
 
-- [x] Once you have reduced the data dimensions, create a DataFrame named `pcs_df` using as columns names `"PC 1", "PC 2"` and `"PC 3"`; use the `crypto_df.index` as the index for this new DataFrame.
+- [x] Once I have reduced the data dimensions, create a DataFrame named `pcs_df` using as columns names `"PC 1", "PC 2"` and `"PC 3"`; use the `crypto_df.index` as the index for this new DataFrame.
 
 ```python
 pcs_df = pd.DataFrame(
@@ -181,7 +181,7 @@ df_elbow.hvplot.line(
 
 !["Elbow Plot"](./plots/elbow_curve.png)
 
-- [x] Once you define the best value for `k`, run the `Kmeans` algorithm to predict the `k` clusters for the cryptocurrencies data. Use the `pcs_df` to run the `KMeans` algorithm.
+- [x] Once I define the best value for `k`, run the `Kmeans` algorithm to predict the `k` clusters for the cryptocurrencies data. Use the `pcs_df` to run the `KMeans` algorithm.
 
 ```python
 # Initialize the K-Means model
@@ -194,7 +194,7 @@ model.fit(pcs_df)
 k_10 = model.predict(pcs_df)
 ```
 
-- [x] Create a new DataFrame named `clustered_df`, that includes the following columns `"Algorithm", "ProofType", "TotalCoinsMined", "TotalCoinSupply", "PC 1", "PC 2", "PC 3", "CoinName", "Class"`. You should maintain the index of the `crypto_df` DataFrames as is shown bellow.
+- [x] Create a new DataFrame named `clustered_df`, that includes the following columns `"Algorithm", "ProofType", "TotalCoinsMined", "TotalCoinSupply", "PC 1", "PC 2", "PC 3", "CoinName", "Class"`. I should maintain the index of the `crypto_df` DataFrames as is shown bellow.
 
 ```python
 clustered_df = pd.concat([crypto_df, pcs_df], axis=1)
@@ -229,11 +229,11 @@ clustered_df.hvplot.table(columns=["CoinName", "Algorithm", "ProofType", "Circul
 
 ## Optional Challenge
 
-- For the challenge section, you have to upload your Jupyter notebook to Amazon SageMaker and deploy it.
+- For the challenge section, I have to upload my Jupyter notebook to Amazon SageMaker and deploy it.
 
-- The `hvplot` library is not included in the built-in anaconda environments, so for this challenge section, you should use the `altair` library instead.
+- The `hvplot` library is not included in the built-in anaconda environments, so for this challenge section, I should use the `altair` library instead.
 
-- [x] Upload your Jupyter notebook and rename it as `crypto_clustering_sm.ipynb`
+- [x] Upload my Jupyter notebook and rename it as `crypto_clustering_sm.ipynb`
 
 - [x] Select the `conda_python3` environment.
 - [x] Install the `altair` library by running the following code before the initial imports.
