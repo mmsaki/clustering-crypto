@@ -3,6 +3,7 @@
 
 ## Table of Contents
 <details> 
+<ol>
 <li>
 1. Crypto Clustering Overview
 </li>
@@ -21,6 +22,7 @@
 <li>
 6. Optional Challenge
 </li>
+</ol>
 </details>
 
 ## Crypto Clustering Overview
