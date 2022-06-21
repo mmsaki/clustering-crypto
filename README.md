@@ -180,20 +180,21 @@ df_elbow.hvplot.line(
 
 ```python
 # Initialize the K-Means model
-model = KMeans(n_clusters = 3, random_state=0)
+model = KMeans(n_clusters = 10, random_state=0)
 
 # Fit the model
 model.fit(pcs_df)
 
 # Predict clusters
-k_3 = model.predict(pcs_df)
+k_10 = model.predict(pcs_df)
 ```
 
 - Create a new DataFrame named `clustered_df`, that includes the following columns `"Algorithm", "ProofType", "TotalCoinsMined", "TotalCoinSupply", "PC 1", "PC 2", "PC 3", "CoinName", "Class"`. You should maintain the index of the `crypto_df` DataFrames as is shown bellow.
 
 ```python
 clustered_df = pd.concat([crypto_df, pcs_df], axis=1)
-clustered_df["Class"] = k_3
+clustered_df["Class"] = k_10
+clustered_df["CoinName"] = coins_name
 clustered_df.head(20)
 ```
 
