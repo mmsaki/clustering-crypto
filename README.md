@@ -5,7 +5,7 @@
 <details> 
 <ol>
 <li>
-[Crypto Clustering Overview](#crypto-clustering-overview)
+Crypto Clustering Overview
 </li>
 <li>
 Data Preprocessing
