@@ -153,6 +153,8 @@ pcs_df.head(10)
 
 - Create an Elbow Curve to find the best value for `k` using the `pcs_df` DataFrame.
 
+!["Elbow Plot"](./plots/elbow_curve.png)
+
 ```python
 inertia = []
 k = list(range(1, 11))
@@ -203,6 +205,8 @@ clustered_df.head(20)
 - In this section, I will create some data visualization to present the final results. 
 - Create a scatter plot using `hvplot.scatter`, to present the clustered data about cryptocurrencies having `x="TotalCoinsMined"` and `y="TotalCoinSupply"` to contrast the number of available coins versus the total number of mined coins. Use the `hover_cols=["CoinName"]` parameter to include the cryptocurrency name on each data point.
 
+!["Hvplot Cluster"](./plots/cluster_plot.png)
+
 ```python
 # Plot Scatter plot
 clustered_df.hvplot.scatter(
@@ -213,6 +217,8 @@ clustered_df.hvplot.scatter(
 ```
 
 - Use `hvplot.table` to create a data table with all the current tradable cryptocurrencies. The table should have the following columns: `"CoinName", "Algorithm", "ProofType", "CirculatingSupply", "TotalCoinsMined", "Class"`
+
+![table](./plots/table_of_tradable_coins.png)
 
 ```python
 clustered_df.hvplot.table(columns=["CoinName", "Algorithm", "ProofType", "CirculatingSupply", "TotalCoinsMined", "Class"], sortable=True, selectable=True)
