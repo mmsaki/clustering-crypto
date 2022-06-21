@@ -3,14 +3,15 @@
 
 ## Table of Contents
 <details> 
-1. 
-2. 
-3. 
-4. 
-5. 
+1. Crypto Clustering Overview
+2. Data Preprocessing
+3. Reducing Data Dimentions Using PCA
+4. Clustering Cryptocurrencies Using K-Means
+5. Visualizing Results
+6. Optional Challenge
 </details>
 
-## Crypto Clustering
+## Crypto Clustering Overview
 
 In this assignment I run the k-Means algorithm and a Principal Component Analysis (PCA) to cluster cryptocurrencies. 
 
