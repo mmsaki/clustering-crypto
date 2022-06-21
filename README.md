@@ -62,7 +62,7 @@ response = requests.get(url).json()
 crypto_df = pd.DataFrame(response["Data"]).T
 ```
 
-- With the data loaded into a Pandas DataFrame, continue with the following data preprocessing tasks.
+    - With the data loaded into a Pandas DataFrame, continue with the following data preprocessing tasks.
 
 - [x] Keep only the necessary columns: 'CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply'
 
