@@ -64,93 +64,93 @@ Optional Challenge
 
     - With the data loaded into a Pandas DataFrame, continue with the following data preprocessing tasks.
 
-- [x] Keep only the necessary columns: `'CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply'`
+    - [x] Keep only the necessary columns: `'CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply'`
 
-```python
-# Keep only necessary columns
-crypto_df = crypto_df[['CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply']]
-```
+    ```python
+    # Keep only necessary columns
+    crypto_df = crypto_df[['CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply']]
+    ```
 
-- [x] Keep only the cryptocurrencies that are trading.
+    - [x] Keep only the cryptocurrencies that are trading.
 
-```python
-# Keep only cryptocurrencies that are trading
-crypto_df = crypto_df[crypto_df["IsTrading"] == True]
-```
+    ```python
+    # Keep only cryptocurrencies that are trading
+    crypto_df = crypto_df[crypto_df["IsTrading"] == True]
+    ```
 
-- [x] Keep only the cryptocurrencies with a working algorithm.
+    - [x] Keep only the cryptocurrencies with a working algorithm.
 
-```python
-crypto_df = crypto_df[crypto_df["Algorithm"] != "N/A"]
-```
+    ```python
+    crypto_df = crypto_df[crypto_df["Algorithm"] != "N/A"]
+    ```
 
-- [x] Remove the `IsTrading` column.
+    - [x] Remove the `IsTrading` column.
 
-```python
-crypto_df = crypto_df.drop(columns = ["IsTrading"])
-```
+    ```python
+    crypto_df = crypto_df.drop(columns = ["IsTrading"])
+    ```
 
-- [x] Remove all cryptocurrencies with at least one null value.
+    - [x] Remove all cryptocurrencies with at least one null value.
 
-```python
-crypto_df = crypto_df.dropna()
-```
+    ```python
+    crypto_df = crypto_df.dropna()
+    ```
 
-- [x] Remove all cryptocurrencies that have no coins mined.
+    - [x] Remove all cryptocurrencies that have no coins mined.
 
-```python
-crypto_df = crypto_df[crypto_df["TotalCoinsMined"] > 0]
-```
+    ```python
+    crypto_df = crypto_df[crypto_df["TotalCoinsMined"] > 0]
+    ```
 
-- [x] Drop all rows where there are 'N/A' text values.
+    - [x] Drop all rows where there are 'N/A' text values.
 
-```python
-crypto_df = crypto_df[crypto_df.iloc[:] != "N/A"].dropna()
-```
+    ```python
+    crypto_df = crypto_df[crypto_df.iloc[:] != "N/A"].dropna()
+    ```
 
-- [x] Store the names of all cryptocurrencies in a DataFrame named `coins_name`, use the `crypto_df.index` as the index for this new DataFrame.
+    - [x] Store the names of all cryptocurrencies in a DataFrame named `coins_name`, use the `crypto_df.index` as the index for this new DataFrame.
 
-```python
-coins_name = crypto_df.index
-```
+    ```python
+    coins_name = crypto_df.index
+    ```
 
-- [x] Remove the `CoinName` column.
+    - [x] Remove the `CoinName` column.
 
-```python
-crypto_df = crypto_df.drop("CoinName", axis=1)
-```
+    ```python
+    crypto_df = crypto_df.drop("CoinName", axis=1)
+    ```
 
-- [x] Create dummy variables for all the text features, and store the resulting data in a DataFrame named `X`.
+    - [x] Create dummy variables for all the text features, and store the resulting data in a DataFrame named `X`.
 
-```python
-X = pd.get_dummies(data = crypto_df, columns = ["Algorithm", "ProofType"])
-```
+    ```python
+    X = pd.get_dummies(data = crypto_df, columns = ["Algorithm", "ProofType"])
+    ```
 
-- [x] Use the [`StandardScaler` from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) to standardize all the data of the `X` DataFrame. Remember, this is important prior to using PCA and K-Means algorithms.
+    - [x] Use the [`StandardScaler` from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) to standardize all the data of the `X` DataFrame. Remember, this is important prior to using PCA and K-Means algorithms.
 
-```python
-X = StandardScaler().fit_transform(X)
-```
+    ```python
+    X = StandardScaler().fit_transform(X)
+    ```
 
-## Reducing Data Dimentions Using PCA
+    ## Reducing Data Dimentions Using PCA
 
-- [x] Use the [`PCA` algorithm from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) to reduce the dimensions of the `X` DataFrame down to three principal components.
+    - [x] Use the [`PCA` algorithm from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) to reduce the dimensions of the `X` DataFrame down to three principal components.
 
-```python
-pca = PCA(n_components=3)
-crypto_pca = pca.fit_transform(X)
-```
+    ```python
+    pca = PCA(n_components=3)
+    crypto_pca = pca.fit_transform(X)
+    ```
 
-- [x] Once I have reduced the data dimensions, create a DataFrame named `pcs_df` using as columns names `"PC 1", "PC 2"` and `"PC 3"`; use the `crypto_df.index` as the index for this new DataFrame.
+    - [x] Once I have reduced the data dimensions, create a DataFrame named `pcs_df` using as columns names `"PC 1", "PC 2"` and `"PC 3"`; use the `crypto_df.index` as the index for this new DataFrame.
 
-```python
-pcs_df = pd.DataFrame(
-    crypto_pca,
-    columns = ["PC 1", "PC 2", "PC 3"],
-    index = coins_name
-)
-pcs_df.head(10)
-```
+    ```python
+    pcs_df = pd.DataFrame(
+        crypto_pca,
+        columns = ["PC 1", "PC 2", "PC 3"],
+        index = coins_name
+    )
+    pcs_df.head(10)
+    ```
 
 ## Clustering Cryptocurrencies Using k-means
 
