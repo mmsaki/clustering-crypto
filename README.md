@@ -156,8 +156,6 @@ pcs_df.head(10)
 
 - [x] Create an Elbow Curve to find the best value for `k` using the `pcs_df` DataFrame.
 
-!["Elbow Plot"](./plots/elbow_curve.png)
-
 ```python
 inertia = []
 k = list(range(1, 11))
@@ -180,6 +178,8 @@ df_elbow.hvplot.line(
     xticks=k
 )
 ```
+
+!["Elbow Plot"](./plots/elbow_curve.png)
 
 - [x] Once you define the best value for `k`, run the `Kmeans` algorithm to predict the `k` clusters for the cryptocurrencies data. Use the `pcs_df` to run the `KMeans` algorithm.
 
@@ -208,8 +208,6 @@ clustered_df.head(20)
 - In this section, I will create some data visualization to present the final results. 
 - [x] Create a scatter plot using `hvplot.scatter`, to present the clustered data about cryptocurrencies having `x="TotalCoinsMined"` and `y="TotalCoinSupply"` to contrast the number of available coins versus the total number of mined coins. Use the `hover_cols=["CoinName"]` parameter to include the cryptocurrency name on each data point.
 
-!["Hvplot Cluster"](./plots/cluster_plot.png)
-
 ```python
 # Plot Scatter plot
 clustered_df.hvplot.scatter(
@@ -219,13 +217,15 @@ clustered_df.hvplot.scatter(
 )
 ```
 
-- [x] Use `hvplot.table` to create a data table with all the current tradable cryptocurrencies. The table should have the following columns: `"CoinName", "Algorithm", "ProofType", "CirculatingSupply", "TotalCoinsMined", "Class"`
+!["Hvplot Cluster"](./plots/cluster_plot.png)
 
-![table](./plots/table_of_tradable_coins.png)
+- [x] Use `hvplot.table` to create a data table with all the current tradable cryptocurrencies. The table should have the following columns: `"CoinName", "Algorithm", "ProofType", "CirculatingSupply", "TotalCoinsMined", "Class"`
 
 ```python
 clustered_df.hvplot.table(columns=["CoinName", "Algorithm", "ProofType", "CirculatingSupply", "TotalCoinsMined", "Class"], sortable=True, selectable=True)
 ```
+
+![table](./plots/table_of_tradable_coins.png)
 
 ## Optional Challenge
 
@@ -241,8 +241,6 @@ clustered_df.hvplot.table(columns=["CoinName", "Algorithm", "ProofType", "Circul
    !pip install -U altair
    ```
 - [x] Use the `altair` scatter plot to create the Elbow Curve.
-
-![Elbow Curve Visualization](./plots/sagemaker_elbow_curve_visualization.png)
 
 ```python
 inertia = []
@@ -265,9 +263,9 @@ alt.Chart(df_elbow).mark_line().encode(
 )
 ```
 
-- [x] Use the `altair` scatter plot to visualize the clusters. Since this is a 2D-Scatter, use `x="PC 1"` and `y="PC 2"` for the axes, and add the following columns as tool tips: `"CoinName", "Algorithm", "TotalCoinsMined", "TotalCoinSupply"`.
+![Elbow Curve Visualization](./plots/sagemaker_elbow_curve_visualization.png)
 
-![Altair Cluster plot](./plots/cluster_altair_visualization.png)
+- [x] Use the `altair` scatter plot to visualize the clusters. Since this is a 2D-Scatter, use `x="PC 1"` and `y="PC 2"` for the axes, and add the following columns as tool tips: `"CoinName", "Algorithm", "TotalCoinsMined", "TotalCoinSupply"`.
 
 ```python
 # Plot the scatter with x="PC 1" and y="PC 2"
@@ -279,6 +277,8 @@ alt.Chart(clustered_df).mark_circle(size=60).encode(
     tooltip=['CoinName', 'Algorithm', 'TotalCoinsMined', 'CirculatingSupply']
 ).interactive()
 ```
+
+![Altair Cluster plot](./plots/cluster_altair_visualization.png)
 
 - [x] Show the table of current tradable cryptocurrencies using the `display()` command.
 ```python
