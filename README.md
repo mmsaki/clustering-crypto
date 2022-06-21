@@ -21,15 +21,15 @@ In this assignment I run the k-Means algorithm and a Principal Component Analysi
 
 - I am asked to accomplish the following main tasks:
 
-- **[Data Preprocessing](#Data-Preprocessing):** Prepare data for dimension reduction with PCA and clustering using K-Means.
+- **[Data Preprocessing](#data-processing):** Prepare data for dimension reduction with PCA and clustering using K-Means.
 
-- **[Reducing Data Dimensions Using PCA](#Reducing-Data-Dimensions-Using-PCA):** Reduce data dimension using the `PCA` algorithm from `sklearn`.
+- **[Reducing Data Dimensions Using PCA](#reducing-data-dimentions-using-pca):** Reduce data dimension using the `PCA` algorithm from `sklearn`.
 
-- **[Clustering Cryptocurrencies Using K-Means](#Clustering-Cryptocurrencies-Using-K-Means):** Predict clusters using the cryptocurrencies data using the `KMeans` algorithm from `sklearn`.
+- **[Clustering Cryptocurrencies Using K-Means](#clustering-cryptocurrencies-using-k-means):** Predict clusters using the cryptocurrencies data using the `KMeans` algorithm from `sklearn`.
 
-- **[Visualizing Results](#Visualizing-Results):** Create some plots and data tables to present your results.
+- **[Visualizing Results](#visualizing-results):** Create some plots and data tables to present your results.
 
-- **[Optional Challenge](#Optional-Challenge):** Deploy your notebook to Amazon SageMaker.
+- **[Optional Challenge](#optional-challenge):** Deploy your notebook to Amazon SageMaker.
 
 ## Data Processing
 
