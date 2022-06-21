@@ -5,22 +5,22 @@
 <details> 
 <ol>
 <li>
-1. Crypto Clustering Overview
+Crypto Clustering Overview
 </li>
 <li>
-2. Data Preprocessing
+Data Preprocessing
 </li>
 <li>
-3. Reducing Data Dimentions Using PCA
+Reducing Data Dimentions Using PCA
 </li>
 <li>
-4. Clustering Cryptocurrencies Using K-Means
+Clustering Cryptocurrencies Using K-Means
 </li>
 <li>
-5. Visualizing Results
+Visualizing Results
 </li>
 <li>
-6. Optional Challenge
+Optional Challenge
 </li>
 </ol>
 </details>
