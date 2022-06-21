@@ -284,4 +284,4 @@ alt.Chart(clustered_df).mark_circle(size=60).encode(
 ```python
 display(clustered_df)
 ```
-- [x] Remove all `hvplot` references from your code.
+- [x] Remove all `hvplot` references from the code.
