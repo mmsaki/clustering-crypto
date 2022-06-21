@@ -25,6 +25,9 @@ Optional Challenge
 </ol>
 </details>
 
+**File:** [Clustering Crypto](./ClusteringCrypto/crypto_clustering.ipynb)
+**File:** [Optional Challenge](./ClusteringCrypto/crypto_clustering_sm.ipynb)
+
 ## Crypto Clustering Overview
 
 In this assignment I run the k-Means algorithm and a Principal Component Analysis (PCA) to cluster cryptocurrencies. 
