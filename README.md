@@ -48,7 +48,7 @@ In this assignment I run the k-Means algorithm and a Principal Component Analysi
 
 ## Data Processing
 
-- Using the following `requests` library, retreive the necessary data from the following API endpoint from _CryptoCompare_ - `https://min-api.cryptocompare.com/data/all/coinlist`. **HINT:** You will need to use the 'Data' key from the json response, then transpose the DataFrame. Name your DataFrame `crypto_df`.
+- [x] Using the following `requests` library, retreive the necessary data from the following API endpoint from _CryptoCompare_ - `https://min-api.cryptocompare.com/data/all/coinlist`. **HINT:** You will need to use the 'Data' key from the json response, then transpose the DataFrame. Name your DataFrame `crypto_df`.
 
 ```python
 # Use the following endpoint to fetch json data
@@ -61,69 +61,69 @@ crypto_df = pd.DataFrame(response["Data"]).T
 
 - With the data loaded into a Pandas DataFrame, continue with the following data preprocessing tasks.
 
-- Keep only the necessary columns: 'CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply'
+- [x] Keep only the necessary columns: 'CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply'
 
 ```python
 # Keep only necessary columns
 crypto_df = crypto_df[['CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply']]
 ```
 
-- Keep only the cryptocurrencies that are trading.
+- [x] Keep only the cryptocurrencies that are trading.
 
 ```python
 # Keep only cryptocurrencies that are trading
 crypto_df = crypto_df[crypto_df["IsTrading"] == True]
 ```
 
-- Keep only the cryptocurrencies with a working algorithm.
+- [x] Keep only the cryptocurrencies with a working algorithm.
 
 ```python
 crypto_df = crypto_df[crypto_df["Algorithm"] != "N/A"]
 ```
 
--  Remove the `IsTrading` column.
+- [x] Remove the `IsTrading` column.
 
 ```python
 crypto_df = crypto_df.drop(columns = ["IsTrading"])
 ```
 
-- Remove all cryptocurrencies with at least one null value.
+- [x] Remove all cryptocurrencies with at least one null value.
 
 ```python
 crypto_df = crypto_df.dropna()
 ```
 
-- Remove all cryptocurrencies that have no coins mined.
+- [x] Remove all cryptocurrencies that have no coins mined.
 
 ```python
 crypto_df = crypto_df[crypto_df["TotalCoinsMined"] > 0]
 ```
 
-- Drop all rows where there are 'N/A' text values.
+- [x] Drop all rows where there are 'N/A' text values.
 
 ```python
 crypto_df = crypto_df[crypto_df.iloc[:] != "N/A"].dropna()
 ```
 
-- Store the names of all cryptocurrencies in a DataFrame named `coins_name`, use the `crypto_df.index` as the index for this new DataFrame.
+- [x] Store the names of all cryptocurrencies in a DataFrame named `coins_name`, use the `crypto_df.index` as the index for this new DataFrame.
 
 ```python
 coins_name = crypto_df.index
 ```
 
-- Remove the `CoinName` column.
+- [x] Remove the `CoinName` column.
 
 ```python
 crypto_df = crypto_df.drop("CoinName", axis=1)
 ```
 
-- Create dummy variables for all the text features, and store the resulting data in a DataFrame named `X`.
+- [x] Create dummy variables for all the text features, and store the resulting data in a DataFrame named `X`.
 
 ```python
 X = pd.get_dummies(data = crypto_df, columns = ["Algorithm", "ProofType"])
 ```
 
-- Use the [`StandardScaler` from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) to standardize all the data of the `X` DataFrame. Remember, this is important prior to using PCA and K-Means algorithms.
+- [x] Use the [`StandardScaler` from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) to standardize all the data of the `X` DataFrame. Remember, this is important prior to using PCA and K-Means algorithms.
 
 ```python
 X = StandardScaler().fit_transform(X)
@@ -131,14 +131,14 @@ X = StandardScaler().fit_transform(X)
 
 ## Reducing Data Dimentions Using PCA
 
-- Use the [`PCA` algorithm from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) to reduce the dimensions of the `X` DataFrame down to three principal components.
+- [x] Use the [`PCA` algorithm from `sklearn`](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) to reduce the dimensions of the `X` DataFrame down to three principal components.
 
 ```python
 pca = PCA(n_components=3)
 crypto_pca = pca.fit_transform(X)
 ```
 
-- Once you have reduced the data dimensions, create a DataFrame named `pcs_df` using as columns names `"PC 1", "PC 2"` and `"PC 3"`; use the `crypto_df.index` as the index for this new DataFrame.
+- [x] Once you have reduced the data dimensions, create a DataFrame named `pcs_df` using as columns names `"PC 1", "PC 2"` and `"PC 3"`; use the `crypto_df.index` as the index for this new DataFrame.
 
 ```python
 pcs_df = pd.DataFrame(
@@ -151,7 +151,7 @@ pcs_df.head(10)
 
 ## Clustering Cryptocurrencies Using k-means
 
-- Create an Elbow Curve to find the best value for `k` using the `pcs_df` DataFrame.
+- [x] Create an Elbow Curve to find the best value for `k` using the `pcs_df` DataFrame.
 
 !["Elbow Plot"](./plots/elbow_curve.png)
 
@@ -178,7 +178,7 @@ df_elbow.hvplot.line(
 )
 ```
 
-- Once you define the best value for `k`, run the `Kmeans` algorithm to predict the `k` clusters for the cryptocurrencies data. Use the `pcs_df` to run the `KMeans` algorithm.
+- [x] Once you define the best value for `k`, run the `Kmeans` algorithm to predict the `k` clusters for the cryptocurrencies data. Use the `pcs_df` to run the `KMeans` algorithm.
 
 ```python
 # Initialize the K-Means model
@@ -191,7 +191,7 @@ model.fit(pcs_df)
 k_10 = model.predict(pcs_df)
 ```
 
-- Create a new DataFrame named `clustered_df`, that includes the following columns `"Algorithm", "ProofType", "TotalCoinsMined", "TotalCoinSupply", "PC 1", "PC 2", "PC 3", "CoinName", "Class"`. You should maintain the index of the `crypto_df` DataFrames as is shown bellow.
+- [x] Create a new DataFrame named `clustered_df`, that includes the following columns `"Algorithm", "ProofType", "TotalCoinsMined", "TotalCoinSupply", "PC 1", "PC 2", "PC 3", "CoinName", "Class"`. You should maintain the index of the `crypto_df` DataFrames as is shown bellow.
 
 ```python
 clustered_df = pd.concat([crypto_df, pcs_df], axis=1)
@@ -203,7 +203,7 @@ clustered_df.head(20)
 ## Visualizing Results
 
 - In this section, I will create some data visualization to present the final results. 
-- Create a scatter plot using `hvplot.scatter`, to present the clustered data about cryptocurrencies having `x="TotalCoinsMined"` and `y="TotalCoinSupply"` to contrast the number of available coins versus the total number of mined coins. Use the `hover_cols=["CoinName"]` parameter to include the cryptocurrency name on each data point.
+- [x] Create a scatter plot using `hvplot.scatter`, to present the clustered data about cryptocurrencies having `x="TotalCoinsMined"` and `y="TotalCoinSupply"` to contrast the number of available coins versus the total number of mined coins. Use the `hover_cols=["CoinName"]` parameter to include the cryptocurrency name on each data point.
 
 !["Hvplot Cluster"](./plots/cluster_plot.png)
 
@@ -216,7 +216,7 @@ clustered_df.hvplot.scatter(
 )
 ```
 
-- Use `hvplot.table` to create a data table with all the current tradable cryptocurrencies. The table should have the following columns: `"CoinName", "Algorithm", "ProofType", "CirculatingSupply", "TotalCoinsMined", "Class"`
+- [x] Use `hvplot.table` to create a data table with all the current tradable cryptocurrencies. The table should have the following columns: `"CoinName", "Algorithm", "ProofType", "CirculatingSupply", "TotalCoinsMined", "Class"`
 
 ![table](./plots/table_of_tradable_coins.png)
 
