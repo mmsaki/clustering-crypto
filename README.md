@@ -64,7 +64,7 @@ Optional Challenge
 
     - With the data loaded into a Pandas DataFrame, continue with the following data preprocessing tasks.
 
-- [x] Keep only the necessary columns: 'CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply'
+- [x] Keep only the necessary columns: `'CoinName','Algorithm','IsTrading','ProofType','TotalCoinsMined','CirculatingSupply'`
 
 ```python
 # Keep only necessary columns
