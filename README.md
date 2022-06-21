@@ -53,14 +53,14 @@ Optional Challenge
 
 - [x] Using the following `requests` library, retreive the necessary data from the following API endpoint from _CryptoCompare_ - `https://min-api.cryptocompare.com/data/all/coinlist`. **HINT:** I will need to use the 'Data' key from the json response, then transpose the DataFrame. Name my DataFrame `crypto_df`.
 
-```python
-# Use the following endpoint to fetch json data
-url = "https://min-api.cryptocompare.com/data/all/coinlist"
-response = requests.get(url).json()
+    ```python
+    # Use the following endpoint to fetch json data
+    url = "https://min-api.cryptocompare.com/data/all/coinlist"
+    response = requests.get(url).json()
 
-# Create a DataFrame 
-crypto_df = pd.DataFrame(response["Data"]).T
-```
+    # Create a DataFrame 
+    crypto_df = pd.DataFrame(response["Data"]).T
+    ```
 
     - With the data loaded into a Pandas DataFrame, continue with the following data preprocessing tasks.
 
