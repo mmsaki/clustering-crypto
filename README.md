@@ -230,15 +230,55 @@ clustered_df.hvplot.table(columns=["CoinName", "Algorithm", "ProofType", "Circul
 
 - The `hvplot` library is not included in the built-in anaconda environments, so for this challenge section, you should use the `altair` library instead.
 
-- Upload your Jupyter notebook and rename it as `crypto_clustering_sm.ipynb`
+- [x] Upload your Jupyter notebook and rename it as `crypto_clustering_sm.ipynb`
 
-- Select the `conda_python3` environment.
-- Install the `altair` library by running the following code before the initial imports.
+- [x] Select the `conda_python3` environment.
+- [x] Install the `altair` library by running the following code before the initial imports.
    ```python
    !pip install -U altair
    ```
-- Use the `altair` scatter plot to create the Elbow Curve.
-- Use the `altair` scatter plot to visualize the clusters. Since this is a 2D-Scatter, use `x="PC 1"` and `y="PC 2"` for the axes, and add the following columns as tool tips: `"CoinName", "Algorithm", "TotalCoinsMined", "TotalCoinSupply"`.
-- Use the `altair` scatter plot to visualize the tradable cryptocurrencies using `x="TotalCoinsMined"` and `y="TotalCoinSupply"` for the axes.
-- Show the table of current tradable cryptocurrencies using the `display()` command.
-- Remove all `hvplot` references from your code.
+- [x] Use the `altair` scatter plot to create the Elbow Curve.
+
+![Elbow Curve Visualization](./plots/sagemaker_elbow_curve_visualization.png)
+
+```python
+inertia = []
+k = list(range(1, 11))
+
+# Calculate the inertia for the range of k values
+for i in k:
+    k_model = KMeans(n_clusters=i, random_state=1)
+    k_model.fit(pcs_df)
+    inertia.append(k_model.inertia_)
+
+# Create the Elbow Curve using altair
+elbow_data = {"k": k, "inertia": inertia}
+df_elbow = pd.DataFrame(elbow_data)
+
+# Create Elbow plot
+alt.Chart(df_elbow).mark_line().encode(
+    x="k", 
+    y="inertia"
+)
+```
+
+- [x] Use the `altair` scatter plot to visualize the clusters. Since this is a 2D-Scatter, use `x="PC 1"` and `y="PC 2"` for the axes, and add the following columns as tool tips: `"CoinName", "Algorithm", "TotalCoinsMined", "TotalCoinSupply"`.
+
+![Altair Cluster plot](./plots/cluster_altair_visualization.png)
+
+```python
+# Plot the scatter with x="PC 1" and y="PC 2"
+# Plot the clusters
+alt.Chart(clustered_df).mark_circle(size=60).encode(
+    x="PC 1",
+    y="PC 2",
+    color='Class',
+    tooltip=['CoinName', 'Algorithm', 'TotalCoinsMined', 'CirculatingSupply']
+).interactive()
+```
+
+- [x] Show the table of current tradable cryptocurrencies using the `display()` command.
+```python
+display(clustered_df)
+```
+- [x] Remove all `hvplot` references from your code.
