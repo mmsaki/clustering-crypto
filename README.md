@@ -280,8 +280,4 @@ alt.Chart(clustered_df).mark_circle(size=60).encode(
 
 ![Altair Cluster plot](./plots/cluster_altair_visualization.png)
 
-- [x] Show the table of current tradable cryptocurrencies using the `display()` command.
-```python
-display(clustered_df)
-```
-- [x] Remove all `hvplot` references from the code.
+_ _ _ _
